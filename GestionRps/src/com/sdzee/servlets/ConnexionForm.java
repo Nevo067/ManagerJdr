@@ -43,8 +43,8 @@ public class ConnexionForm extends HttpServlet {
 			erreur.put(CHAMP_PASSWORD,password );
 			e.printStackTrace();
 		}
-		utD.creer(ut);
-		return ut;
+		return utD.findUtilisateur(ut);
+		
 		
 		
 	}

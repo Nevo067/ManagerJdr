@@ -39,12 +39,14 @@ public class InscriptionForm extends HttpServlet {
 		}
 		try {
 			ValidationPassword(password);
-			ut.setLogin(password);
+			ut.setPassword(password);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			erreur.put(CHAMP_PASSWORD,password );
 			e.printStackTrace();
 		}
+		System.out.println(password+"test");
+		System.out.println(ut.getPassword()+"test");
 		ut2.creer(ut);
 		return ut;
 		

@@ -28,12 +28,15 @@ public class ConnexionServlet extends HttpServlet {
 		 ConnexionForm con = new ConnexionForm();
 		 
 		 Utilisateur us =con.ConnexionUtilisateur(req);
-		 req.setAttribute("erreur", con.erreur.size());
-		 if(con.erreur.size()==0)
+		 if(us != null)
 		 {
-			 ses.setAttribute("login", us.getLogin());
-			 ses.setAttribute("password", us.getPassword());
-			 ses.setAttribute("isConnected", true);
+			 req.setAttribute("erreur", con.erreur.size());
+			 if(con.erreur.size()==0)
+			 {
+				 ses.setAttribute("login", us.getLogin());
+				 ses.setAttribute("password", us.getPassword());
+				 ses.setAttribute("isConnected", true);
+			 }
 		 }
 		 
 		 
