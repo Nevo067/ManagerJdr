@@ -1,0 +1,43 @@
+@charset "ISO-8859-1";
+
+label
+{
+	
+	
+	font-size: 15px;
+	padding-right:25px;
+	margin-right: 50px;
+	margin-bottom:10px;
+	
+}
+fieldset
+{
+	border-radius:25px;
+	padding:10px;
+	border: 2px blue solid;
+}
+input
+{
+	border: 2px black solid;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	
+}
+input[type=submit]
+{
+	border-radius: 5px;
+}
+input[type=submit]:hover
+{
+	background-color:#7b8ce0;
+	border-radius: 5px;
+}
+h1
+{
+	text-align: center;
+}
+.requis
+{
+	color:green;
+}
+
