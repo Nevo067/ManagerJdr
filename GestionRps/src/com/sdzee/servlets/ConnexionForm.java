@@ -3,6 +3,7 @@ package com.sdzee.servlets;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +14,7 @@ public class ConnexionForm extends HttpServlet {
 	private static final String CHAMP_LOGIN = "login";
 	private static final String CHAMP_PASSWORD ="password";
 	
+	
 	Map<String, String>erreur;
 	
 	public ConnexionForm() {
@@ -20,11 +22,11 @@ public class ConnexionForm extends HttpServlet {
 		// TODO Auto-generated constructor stub
 		erreur = new HashMap<String, String>();
 	}
-	public Utilisateur ConnexionUtilisateur(HttpServletRequest req)
+	public Utilisateur ConnexionUtilisateur(HttpServletRequest req,UtilisateurDao utD)
 	{
 		
 		Utilisateur ut = new Utilisateur();
-		UtilisateurDao utD = new UtilisateurDao();
+		
 		String login = req.getParameter(CHAMP_LOGIN);
 		String password = req.getParameter(CHAMP_PASSWORD);
 		try {
@@ -37,7 +39,7 @@ public class ConnexionForm extends HttpServlet {
 		}
 		try {
 			ValidationPassword(password);
-			ut.setLogin(password);
+			ut.setPassword(password);;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			erreur.put(CHAMP_PASSWORD,password );

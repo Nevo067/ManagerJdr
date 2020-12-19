@@ -2,12 +2,14 @@ package com.sdzee.servlets;
 
 import java.io.IOException;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sdzee.Dao.UtilisateurDao;
 import com.sdzee.beans.Utilisateur;
 
 public class ConnexionServlet extends HttpServlet {
@@ -15,6 +17,8 @@ public class ConnexionServlet extends HttpServlet {
 	private static final String Vue ="/WEB-INF/Connexion.jsp";
 	private static final String login ="login";
 	private static final String password ="password";
+	@EJB
+	UtilisateurDao utDao;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -27,7 +31,7 @@ public class ConnexionServlet extends HttpServlet {
 		 ses.setAttribute("estConnecter", true);
 		 ConnexionForm con = new ConnexionForm();
 		 
-		 Utilisateur us =con.ConnexionUtilisateur(req);
+		 Utilisateur us =con.ConnexionUtilisateur(req,utDao);
 		 if(us != null)
 		 {
 			 req.setAttribute("erreur", con.erreur.size());

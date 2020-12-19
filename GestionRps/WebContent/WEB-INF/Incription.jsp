@@ -10,10 +10,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="Navbar.jsp" %>
 ${ut.login }
 ${ut.password}
 <h1>Inscription</h1>
 <p>Page vous permettant de s'inscrire sur le site</p>
+
 <form action="inscription" method = "POST">
 <fieldset>
 	<legend>Formulaire</legend>

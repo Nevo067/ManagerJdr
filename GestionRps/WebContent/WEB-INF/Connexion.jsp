@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="Navbar.jsp" %>
 <h1>Connexion</h1>
 <p>Page Vous permettant de vous connecter</p>
 <form action="Connexion" method = "POST">
