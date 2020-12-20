@@ -1,0 +1,60 @@
+@charset "ISO-8859-1";
+
+table{
+  margin: auto;
+  border:solid;
+}
+td{
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom :20px;
+  padding-top:20;
+  height:100px;
+  text-align: center;
+  border:solid;
+  margin-top:10%;
+  margin-bottom:10%;
+}
+th
+{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom :20px;
+  padding-top:20;
+  text-align: center;
+  border:solid;
+  margin-top:10%;
+  margin-bottom:10%;
+  background-color:#8caee6;
+}
+tr
+{
+  
+}
+h2
+{
+  color:#8caee6;
+}
+h1
+{
+  text-align:center;
+  border:solid;
+  background-color:#8caee6
+}
+.competence
+{
+  border:solid;
+  border-radius:25px;
+  padding-left: 2%;
+  padding-right:2%;
+  margin:5%;
+}
+input
+{
+  border-radius: 10%;
+  margin-right:5%;
+  margin-left:5%;
+  text-align:center;
+  height:20%
+    
+}
