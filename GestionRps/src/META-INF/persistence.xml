@@ -5,12 +5,13 @@
 	
 	
 	<persistence-unit name="bdd_sdzee_PU" transaction-type="JTA">
-	
         <jta-data-source>testPool</jta-data-source>
         <class>com.sdzee.beans.Utilisateur</class>
+		<class>com.sdzee.beans.Characterc</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />	
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database"/> 	
         </properties>
     </persistence-unit>
 </persistence>

@@ -6,33 +6,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Character {
-	
-	
+public class Characterc {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer idCharacterc;
+	
 	private String nom;
 	private String mana;
 	private String stress;
 	//Characteristique
-	private int force;
-	private int constitution;
-	private int dexterite;
-	private int perception;
-	private int courage;
+	private Integer forTce;
+	
+
+	private Integer constitution;
+	private Integer dexterite;
+	private Integer perception;
+	private Integer courage;
 	//Foreign Key
-	private Collection<Competence>competences;
-	public Character() {
+	
+	public Characterc() {
 		super();
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getNom() {
 		return nom;
@@ -53,10 +49,10 @@ public class Character {
 		this.stress = stress;
 	}
 	public int getForce() {
-		return force;
+		return forTce;
 	}
 	public void setForce(int force) {
-		this.force = force;
+		this.forTce = force;
 	}
 	public int getConstitution() {
 		return constitution;
@@ -82,11 +78,36 @@ public class Character {
 	public void setCourage(int courage) {
 		this.courage = courage;
 	}
-	public Collection<Competence> getCompetences() {
-		return competences;
+	public Integer getIdCharacterc() {
+		return idCharacterc;
 	}
-	public void setCompetences(Collection<Competence> competences) {
-		this.competences = competences;
+	public void setIdCharacterc(Integer idCharacterc) {
+		this.idCharacterc = idCharacterc;
+	}
+	public Integer getForTce() {
+		return forTce;
+	}
+	public void setForTce(Integer forTce) {
+		this.forTce = forTce;
+	}
+	public void setConstitution(Integer constitution) {
+		this.constitution = constitution;
+	}
+	public void setDexterite(Integer dexterite) {
+		this.dexterite = dexterite;
+	}
+	public void setPerception(Integer perception) {
+		this.perception = perception;
+	}
+	public void setCourage(Integer courage) {
+		this.courage = courage;
+	}
+	
+	@Override
+	public String toString() {
+		return "Character [id=" + idCharacterc + ", nom=" + nom + ", mana=" + mana + ", stress=" + stress + ", force=" + forTce
+				+ ", constitution=" + constitution + ", dexterite=" + dexterite + ", perception=" + perception
+				+ ", courage=" + courage +  "]";
 	}
 	
 	

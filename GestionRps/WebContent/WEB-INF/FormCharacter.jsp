@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form>
+<form action="FormCharacter" method="post">
   <h1>Personnage</h1>
   <h2>Caracteristique</h2>
-    <label>Nom:</label>   <input type="text">
-  Mana:  <input type="text">
-  <label>Stress:<input type="text"></p>
+    <label>Nom:</label>   <input name="CharaPri" type="text">
+  Mana:  <input name="CharaPri" type="text">
+  <label>Stress:<input name="CharaPri" type="text"></p>
   <table>
     <tr>
       <th>Force</th>
@@ -23,11 +23,11 @@
       <th>Courage</th>
     </tr>
     <tr>
-      <td><input type="number"></td>
-      <td><input type="number"></td>
-      <td><input type="number"></td>
-      <td><input type="number"></td>
-      <td><input type="number"></td>
+      <td><input name="chara" type="number"></td>
+      <td><input name="chara" type="number"></td>
+      <td><input name="chara" type="number"></td>
+      <td><input name="chara" type="number"></td>
+      <td><input name="chara" type="number"></td>
     </tr>
   </table>
   <h2>Competence</h2>
@@ -37,6 +37,7 @@
   <p>Description</p>
     <textarea cols=150 row=150></textarea>
   </div>
+  <input type="submit" value ="Envoyer"></submit>
   </form>
 </body>
 </html>

@@ -1,18 +1,24 @@
 package com.sdzee.beans;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUtilisateur;
+	
 	private String login;
 	private String password;
 	private static int nbUti = 0;
+	
 	
 	public Utilisateur() {
 		// TODO Auto-generated constructor stub

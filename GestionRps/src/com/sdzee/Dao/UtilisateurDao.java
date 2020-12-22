@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
 
 import com.sdzee.beans.Utilisateur;
@@ -21,15 +23,22 @@ public class UtilisateurDao {
 	    private static final String PARAM_PASS  = "password";
 
 	    // Injection du manager, qui s'occupe de la connexion avec la BDD
-	    @PersistenceContext( unitName = "bdd_sdzee_PU" )
-	    private EntityManager em;
+	    @PersistenceUnit( unitName = "bdd_sdzee_PU" )
+	    private EntityManagerFactory emf;
 
 	    // Enregistrement d'un nouvel utilisateur
 	    public void creer( Utilisateur utilisateur ){
+	    		EntityManager em = emf.createEntityManager();
+	    		em.getTransaction().begin();
 	            em.persist( utilisateur );
+	            em.flush();
+	            em.getTransaction().commit();
+	            
+	            
 	    }
 	    public Utilisateur findLogin(String login)
 	    {
+	    	EntityManager em = emf.createEntityManager();
 	    	Query requette = em.createQuery(SELECTQUERY);
 	    	requette.setParameter(PARAM_LOGIN, login);
 	    	Utilisateur ut = (Utilisateur) requette.getSingleResult();
@@ -37,6 +46,7 @@ public class UtilisateurDao {
 	    }
 	    public Utilisateur findUtilisateur(Utilisateur ut)
 	    {
+	    	EntityManager em = emf.createEntityManager();
 	    	System.out.println((em != null) +"test");
 	    	
 	    	Query requette = em.createQuery(SELECTUTIL);
