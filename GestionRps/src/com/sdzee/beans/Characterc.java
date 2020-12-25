@@ -2,6 +2,7 @@ package com.sdzee.beans;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,9 @@ public class Characterc {
 	private Integer perception;
 	private Integer courage;
 	//Foreign Key
+	
+	@Column(name="CHARAID")
+	private int idUtilisateur;
 	
 	public Characterc() {
 		super();
@@ -68,6 +72,12 @@ public class Characterc {
 	}
 	public int getPerception() {
 		return perception;
+	}
+	public int getIdUtilisateur() {
+		return idUtilisateur;
+	}
+	public void setIdUtilisateur(int idUtilisateur) {
+		this.idUtilisateur = idUtilisateur;
 	}
 	public void setPerception(int perception) {
 		this.perception = perception;

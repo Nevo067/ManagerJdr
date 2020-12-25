@@ -38,8 +38,8 @@ public class ConnexionServlet extends HttpServlet {
 			 if(con.erreur.size()==0)
 			 {
 				 ses.setAttribute("login", us.getLogin());
-				 ses.setAttribute("password", us.getPassword());
 				 ses.setAttribute("isConnected", true);
+				 
 			 }
 		 }
 		 

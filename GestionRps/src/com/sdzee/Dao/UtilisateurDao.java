@@ -29,10 +29,10 @@ public class UtilisateurDao {
 	    // Enregistrement d'un nouvel utilisateur
 	    public void creer( Utilisateur utilisateur ){
 	    		EntityManager em = emf.createEntityManager();
-	    		em.getTransaction().begin();
+	    		
 	            em.persist( utilisateur );
 	            em.flush();
-	            em.getTransaction().commit();
+	            
 	            
 	            
 	    }
@@ -53,7 +53,6 @@ public class UtilisateurDao {
 	    	requette.setParameter(PARAM_LOGIN, ut.getLogin());
 	    	requette.setParameter(PARAM_PASS, ut.getPassword());
 	    	Utilisateur uts = (Utilisateur) requette.getSingleResult();
-	    	
 	    	return uts;
 	    }
 

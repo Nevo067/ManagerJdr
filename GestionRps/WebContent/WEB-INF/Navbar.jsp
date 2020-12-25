@@ -11,10 +11,9 @@
 <ul>
 	<li><a href="<c:url value="inscription"/>">Inscription</a></li>
 	<li><a href="<c:url value="Connexion"/>">Connexion</a></li>
-	<li><a href="<c:url value="Play"/>">Play</a></li>
-	<li><a href="<c:url value="/FormCharacter"/>">Play</a></li>
+	
 	<c:if test="${sessionScope.isConnected}">
-		<li><a>${sessionScope.login}</a></li>
+		<li><a href="<c:url value="/FormCharacter"/>">Play</a></li>
 	</c:if>
 	
 	

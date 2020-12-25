@@ -58,3 +58,9 @@ input
   height:20%
     
 }
+input[type =submit]
+{
+	background-color: #8caee6;
+	width: 100px;
+	height: 20px
+}

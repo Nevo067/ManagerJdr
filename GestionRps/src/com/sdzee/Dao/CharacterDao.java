@@ -18,8 +18,10 @@ public class CharacterDao {
 	//Requette
 	private static final String SelectAll="SELECT * from CHARACTER";
 	private static final String Select ="SELECT * from CHARACTER where Nom =:nom";
+	private static final String SelectByEdit ="SELECT * from CHARACTER where CHARAID = :CHARAID";
 	//Param
 	private static final String NOM = "nom";
+	private static final String CHARAID = "CHARAID";
 	
 	//Entity manager
 	@PersistenceUnit( unitName = "bdd_sdzee_PU" )
@@ -47,6 +49,15 @@ public class CharacterDao {
 		EntityManager em = emf.createEntityManager();
 		Query query =em.createQuery(Select);
 		query.setParameter(NOM, character);
+		List<com.sdzee.beans.Characterc> listChara = query.getResultList();
+		return listChara;
+		
+	}
+	public Collection<Characterc> FindCharacterById(int id)
+	{
+		EntityManager em = emf.createEntityManager();
+		Query query =em.createQuery(Select);
+		query.setParameter(CHARAID, id);
 		List<com.sdzee.beans.Characterc> listChara = query.getResultList();
 		return listChara;
 		
