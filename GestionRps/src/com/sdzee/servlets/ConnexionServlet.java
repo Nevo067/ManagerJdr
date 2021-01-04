@@ -42,6 +42,10 @@ public class ConnexionServlet extends HttpServlet {
 				 
 			 }
 		 }
+		 else
+		 {
+			 System.out.println("marchepas");
+		 }
 		 
 		 
 		 this.getServletContext().getRequestDispatcher(Vue).forward(req, resp);

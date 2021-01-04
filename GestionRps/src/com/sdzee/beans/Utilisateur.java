@@ -12,8 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table
 public class Utilisateur {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +28,7 @@ public class Utilisateur {
 	
 	@OneToMany
 	@JoinColumn(name="CHARAID",referencedColumnName = "UTIL_ID",nullable = false)
-	private List<Characterc>listChara;
+	private List<Charactercss>listChara;
 	
 	
 	public Utilisateur() {

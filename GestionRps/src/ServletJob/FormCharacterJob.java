@@ -2,17 +2,17 @@ package ServletJob;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.sdzee.beans.Characterc;
+import com.sdzee.beans.Charactercss;
 
 public class FormCharacterJob {
 	private static final String CharaPri = "CharaPri";
 	private static final String Chara = "chara";
-	public Characterc Createchara(HttpServletRequest req)
+	public Charactercss Createchara(HttpServletRequest req)
 	{
 		String [] charaPri = req.getParameterValues(CharaPri);
 		String [] chara = req.getParameterValues(Chara);
 		
-		Characterc characters = new Characterc();
+		Charactercss characters = new Charactercss();
 		
 		characters.setNom(charaPri[0]);
 		characters.setMana(charaPri[1]);

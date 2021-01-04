@@ -18,6 +18,14 @@
 	
 
 </div>
+	<select>
+		<c:forEach var="i" begin="0" end="${nbList}" varStatus="status">
+			<option value="${ list[i].idCharacterc }">
+				<c:out value="${ list[i].nom }"></c:out>
+			</option>
+		</c:forEach>
+	</select>
+	
   <h1>Personnage</h1>
   <h2>Caracteristique</h2>
     <label>Nom:</label>   <input name="CharaPri" type="text">

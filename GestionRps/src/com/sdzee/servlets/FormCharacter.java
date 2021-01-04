@@ -1,7 +1,9 @@
 package com.sdzee.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.sdzee.Dao.CharacterDao;
 import com.sdzee.Dao.CompetenceDao;
 import com.sdzee.Dao.UtilisateurDao;
-import com.sdzee.beans.Characterc;
+import com.sdzee.beans.Charactercss;
 import com.sdzee.beans.Utilisateur;
 
 import ServletJob.FormCharacterJob;
@@ -79,11 +81,16 @@ public class FormCharacter extends HttpServlet {
 			ses.setAttribute(SES_PARAM_FORM,0);
 			// TODO Auto-generated method stub
 			FormCharacterJob formCharacterJob = new FormCharacterJob();
-			Characterc ca = formCharacterJob.Createchara(request);
+			Charactercss ca = formCharacterJob.Createchara(request);
 			Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
 			System.out.println(utili.toString());
 			ca.setIdUtilisateur(utili.getIdUtilisateur());
 			chDao.CreateCharacter(ca);
+			createListCharacter(ses, request);
+		}
+		else if(request.getParameter("edit") != null)
+		{
+			createListCharacter(ses, request);
 		}
 		
 		if(request.getParameter(BUTTON_PARAM_FORM) != null)
@@ -92,9 +99,7 @@ public class FormCharacter extends HttpServlet {
 		}
 		else if(request.getParameter(BUTTON_PARAM_EDIT) != null)
 		{
-			ses.setAttribute(SES_PARAM_FORM,1);
-			Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
-			List<Characterc>chaList = (List<Characterc>) chDao.FindCharacterById(utili.getIdUtilisateur());
+			createListCharacter(ses, request);
 			
 		}
 		else if(request.getParameter(BUTTON_PARAM_DELETE) != null)
@@ -103,6 +108,28 @@ public class FormCharacter extends HttpServlet {
 		}
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 		
+	}
+
+	private void createListCharacter(HttpSession ses,HttpServletRequest req) {
+		ses.setAttribute(SES_PARAM_FORM,1);
+		Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
+		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterById(utili.getIdUtilisateur());
+		System.out.println(chaList.size());
+		
+		List<String>nomList = new Vector<String>();
+		for (Charactercss ca : chaList) {
+			nomList.add(ca.getNom());
+		}
+		List<Integer>idList = new Vector<Integer>();
+		for (Charactercss intes : chaList) {
+			idList.add(intes.getIdCharacterc());
+		}
+		
+		ses.setAttribute("listChara", nomList);
+		ses.setAttribute("listId", idList);
+		ses.setAttribute("listCharas", chaList);
+		req.setAttribute("list", chaList);
+		req.setAttribute("nbList", nomList.size());
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.sdzee.beans;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -8,9 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Characterc {
+@Table
+public class Charactercss implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idCharacterc;
@@ -31,7 +34,7 @@ public class Characterc {
 	@Column(name="CHARAID")
 	private int idUtilisateur;
 	
-	public Characterc() {
+	public Charactercss() {
 		super();
 	}
 	public String getNom() {
@@ -113,12 +116,7 @@ public class Characterc {
 		this.courage = courage;
 	}
 	
-	@Override
-	public String toString() {
-		return "Character [id=" + idCharacterc + ", nom=" + nom + ", mana=" + mana + ", stress=" + stress + ", force=" + forTce
-				+ ", constitution=" + constitution + ", dexterite=" + dexterite + ", perception=" + perception
-				+ ", courage=" + courage +  "]";
-	}
+	
 	
 	
 	

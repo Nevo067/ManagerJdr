@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.Query;
@@ -41,10 +42,16 @@ public class UtilisateurDao {
 	    	EntityManager em = emf.createEntityManager();
 	    	Query requette = em.createQuery(SELECTQUERY);
 	    	requette.setParameter(PARAM_LOGIN, login);
-	    	Utilisateur ut = (Utilisateur) requette.getSingleResult();
+	    	Utilisateur ut = null;
+	    	try {
+	    		ut = (Utilisateur) requette.getSingleResult();
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println(e.toString());
+			}
 	    	return ut;
 	    }
-	    public Utilisateur findUtilisateur(Utilisateur ut)
+	    public Utilisateur findUtilisateur(Utilisateur ut) throws NoResultException
 	    {
 	    	EntityManager em = emf.createEntityManager();
 	    	System.out.println((em != null) +"test");
@@ -52,7 +59,15 @@ public class UtilisateurDao {
 	    	Query requette = em.createQuery(SELECTUTIL);
 	    	requette.setParameter(PARAM_LOGIN, ut.getLogin());
 	    	requette.setParameter(PARAM_PASS, ut.getPassword());
-	    	Utilisateur uts = (Utilisateur) requette.getSingleResult();
+	    	Utilisateur uts =null;
+	    	try {
+	    		 uts = (Utilisateur) requette.getSingleResult();
+			} 
+	    	catch (Exception E ) {
+				// TODO: handle exception
+			}
+	    	
+	    	
 	    	return uts;
 	    }
 
