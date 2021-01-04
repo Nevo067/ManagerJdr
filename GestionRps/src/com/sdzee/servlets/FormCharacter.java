@@ -102,6 +102,16 @@ public class FormCharacter extends HttpServlet {
 			createListCharacter(ses, request);
 			
 		}
+		else if(request.getParameter("supp")!=null)
+		{
+			FormCharacterJob formCharacterJob = new FormCharacterJob();
+			Charactercss ca = formCharacterJob.CreateCharaById(request);
+			Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
+			System.out.println(utili.toString());
+			ca.setIdUtilisateur(utili.getIdUtilisateur());
+			chDao.DeleteCharecter(ca);
+			createListCharacter(ses, request);
+		}
 		
 		if(request.getParameter(BUTTON_PARAM_FORM) != null)
 		{
