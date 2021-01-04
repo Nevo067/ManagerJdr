@@ -7,6 +7,7 @@ import com.sdzee.beans.Charactercss;
 public class FormCharacterJob {
 	private static final String CharaPri = "CharaPri";
 	private static final String Chara = "chara";
+	private static final String PARAM_IDCHARA = "idChara";
 	public Charactercss Createchara(HttpServletRequest req)
 	{
 		String [] charaPri = req.getParameterValues(CharaPri);
@@ -28,5 +29,11 @@ public class FormCharacterJob {
 		
 		
 		
+	}
+	public Charactercss CreateCharaById(HttpServletRequest req)
+	{
+		Charactercss ca =Createchara(req);
+		ca.setIdCharacterc(Integer.parseInt(req.getParameter(PARAM_IDCHARA)));
+		return ca;
 	}
 }

@@ -88,6 +88,17 @@ public class CharacterDao {
 		return listChara;
 		
 	}
+	public void UpdateCharacter(Charactercss ca) throws IllegalArgumentException
+	{
+		EntityManager em = emf.createEntityManager();
+		em.merge(ca);
+	}
+	public void DeleteCharecter(Charactercss ca)
+	{
+		//TODO:A FINIR
+		EntityManager em = emf.createEntityManager();
+		em.remove(ca);
+	}
 		
 		
 	

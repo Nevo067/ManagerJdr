@@ -18,8 +18,9 @@
 	
 
 </div>
-	<select>
-		<c:forEach var="i" begin="0" end="${nbList}" varStatus="status">
+	${ nbList }
+	<select name="idChara">
+		<c:forEach  var="i" begin="0" end="${ nbList }" varStatus="status">
 			<option value="${ list[i].idCharacterc }">
 				<c:out value="${ list[i].nom }"></c:out>
 			</option>

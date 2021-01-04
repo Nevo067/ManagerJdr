@@ -63,9 +63,11 @@ public class FormCharacter extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession ses = request.getSession();
+		createListCharacter(ses, request);
 		if(ses.getAttribute(SES_PARAM_FORM)== null)
 		{
-			ses.setAttribute(SES_PARAM_FORM,1);
+			ses.setAttribute(SES_PARAM_FORM,0);
+			
 		}
 		
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
@@ -90,7 +92,15 @@ public class FormCharacter extends HttpServlet {
 		}
 		else if(request.getParameter("edit") != null)
 		{
+			
+			FormCharacterJob formCharacterJob = new FormCharacterJob();
+			Charactercss ca = formCharacterJob.CreateCharaById(request);
+			Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
+			System.out.println(utili.toString());
+			ca.setIdUtilisateur(utili.getIdUtilisateur());
+			chDao.UpdateCharacter(ca);
 			createListCharacter(ses, request);
+			
 		}
 		
 		if(request.getParameter(BUTTON_PARAM_FORM) != null)
