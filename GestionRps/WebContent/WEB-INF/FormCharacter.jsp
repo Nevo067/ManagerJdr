@@ -29,9 +29,9 @@
 	
   <h1>Personnage</h1>
   <h2>Caracteristique</h2>
-    <label>Nom:</label>   <input name="CharaPri" type="text">
-  Mana:  <input name="CharaPri" type="text">
-  <label>Stress:<input name="CharaPri" type="text"></p>
+    <label>Nom:</label>   <input name="CharaPri" type="text" value="${ charaEdit.nom }">
+  Mana:  <input name="CharaPri" type="text" value="${ charaEdit.mana }">
+  <label>Stress:<input name="CharaPri" type="text" value="${ charaEdit.stress }"></p>
   <table>
     <tr>
       <th>Force</th>
@@ -41,11 +41,11 @@
       <th>Courage</th>
     </tr>
     <tr>
-      <td><input name="chara" type="number"></td>
-      <td><input name="chara" type="number"></td>
-      <td><input name="chara" type="number"></td>
-      <td><input name="chara" type="number"></td>
-      <td><input name="chara" type="number"></td>
+      <td><input name="chara" type="number" value="${ charaEdit.forTce }"></td>
+      <td><input name="chara" type="number" value="${ charaEdit.constitution }"></td>
+      <td><input name="chara" type="number" value="${ charaEdit.dexterite }"></td>
+      <td><input name="chara" type="number" value="${ charaEdit.perception }"></td>
+      <td><input name="chara" type="number" value="${ charaEdit.courage }"></td>
     </tr>
   </table>
   <h2>Competence</h2>

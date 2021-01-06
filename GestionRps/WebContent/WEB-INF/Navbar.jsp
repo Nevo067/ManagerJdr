@@ -13,7 +13,9 @@
 	<li><a href="<c:url value="Connexion"/>">Connexion</a></li>
 	
 	<c:if test="${sessionScope.isConnected}">
-		<li><a href="<c:url value="/FormCharacter"/>">Play</a></li>
+		<li><a href="<c:url value="/FormCharacter"/>">Creation de personnage</a></li>
+		<li><a href="<c:url value="/ListCharacterServlet"/>">Liste de personnage</a></li>
+		<li><a href="<c:url value="/UtilisateurPageServlet"/>">Page d'utilisateur</a></li>
 	</c:if>
 	
 	

@@ -66,9 +66,13 @@ public class UtilisateurDao {
 	    	catch (Exception E ) {
 				// TODO: handle exception
 			}
-	    	
-	    	
 	    	return uts;
+	    }
+	    public Utilisateur Update(Utilisateur ut)throws IllegalArgumentException
+	    {
+	    	EntityManager em = emf.createEntityManager();
+	    	Utilisateur util = em.merge(ut);
+	    	return util;
 	    }
 
 	    

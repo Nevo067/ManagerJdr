@@ -36,11 +36,15 @@ public class FormCharacter extends HttpServlet {
        private static final String SES_PARAM_FORM = "formEdit";
        
        /*
-        * Name of button to change the form
+        * Name of button that change the form
         */
        private static final String BUTTON_PARAM_FORM = "formAdd";
        private static final String BUTTON_PARAM_EDIT = "formEdit";
        private static final String BUTTON_PARAM_DELETE = "formDelete";
+       
+       //Character that have to load on the edit page
+       private static final String CHARA_EDIT ="charaEdit";
+       private static final String CHARA_BOOL ="charaIsLoad";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -78,6 +82,21 @@ public class FormCharacter extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession ses = request.getSession();
+		
+		//Button of ListCharacter
+		Utilisateur util = utilDao.findLogin((String) ses.getAttribute("login"));
+		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterById(util.getIdUtilisateur());
+		
+		for (Charactercss charactercss : chaList) {
+			String buttonName = "btn"+charactercss.getIdCharacterc();
+			if(request.getParameter(buttonName) != null)
+			{
+				request.setAttribute(CHARA_EDIT, charactercss);
+			}
+		}
+		
+		
+		//Button of FormCharacter
 		if(request.getParameter("envoie") != null)
 		{
 			ses.setAttribute(SES_PARAM_FORM,0);
