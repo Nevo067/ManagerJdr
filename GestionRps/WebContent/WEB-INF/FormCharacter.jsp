@@ -11,12 +11,9 @@
 <%@ include file="Navbar.jsp" %>
 <form action="FormCharacter" method="post">
 <div>
-
 	<input type="submit" name="formAdd" value="Ajouter">
 	<input type="submit" name="formEdit" value="Edit">
 	<input type="submit" name="formDelete" value="Delete">
-	
-
 </div>
 	${ nbList }
 	<select name="idChara">

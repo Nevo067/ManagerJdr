@@ -75,7 +75,7 @@ public class ListCharacterServlet extends HttpServlet {
 	 */
 	private void createListCharacter(HttpServletRequest request, HttpSession ses) {
 		Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
-		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterById(utili.getIdUtilisateur());
+		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterByUtilisateurId(utili.getIdUtilisateur());
 		
 		List<String>nomList	= new Vector<String>();
 		List<Integer>idList = new Vector<Integer>();

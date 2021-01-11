@@ -85,7 +85,7 @@ public class FormCharacter extends HttpServlet {
 		
 		//Button of ListCharacter
 		Utilisateur util = utilDao.findLogin((String) ses.getAttribute("login"));
-		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterById(util.getIdUtilisateur());
+		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterByUtilisateurId(util.getIdUtilisateur());
 		
 		for (Charactercss charactercss : chaList) {
 			String buttonName = "btn"+charactercss.getIdCharacterc();
@@ -152,7 +152,7 @@ public class FormCharacter extends HttpServlet {
 	private void createListCharacter(HttpSession ses,HttpServletRequest req) {
 		ses.setAttribute(SES_PARAM_FORM,1);
 		Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
-		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterById(utili.getIdUtilisateur());
+		List<Charactercss>chaList =   (List<Charactercss>) chDao.FindCharacterByUtilisateurId(utili.getIdUtilisateur());
 		System.out.println(chaList.size());
 		
 		List<String>nomList = new Vector<String>();

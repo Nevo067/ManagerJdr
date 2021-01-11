@@ -14,7 +14,7 @@ import com.sdzee.beans.Competence;
 @Stateless
 public class CompetenceDao {
 	
-
+	
 	//Requette
 	private static final String SelectAll="SELECT * from Competence";
 	private static final String Select ="SELECT * from Competence where Nom =:nom";
