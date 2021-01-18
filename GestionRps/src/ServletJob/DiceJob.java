@@ -9,7 +9,7 @@ public class DiceJob {
 	{
 		Random rd = new Random();
 		//I don't know but the reponse is 42
-		return rd.nextInt(valDice - 1)+1+valDice;
+		return rd.nextInt((valDice - 1)+1)+1;
 	}
 	public static List<Integer> RollMultiDice(int valDice,int nbDice)
 	{

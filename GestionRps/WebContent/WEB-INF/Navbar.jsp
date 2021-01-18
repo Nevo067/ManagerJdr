@@ -16,10 +16,8 @@
 		<li><a href="<c:url value="/FormCharacter"/>">Creation de personnage</a></li>
 		<li><a href="<c:url value="/ListCharacterServlet"/>">Liste de personnage</a></li>
 		<li><a href="<c:url value="/UtilisateurPageServlet"/>">Page d'utilisateur</a></li>
-		<li><a href="<c:url value="/FightServlet"/>">Page d'utilisateur</a></li>
+		<li><a href="<c:url value="/FightServlet"/>">Play</a></li>
 	</c:if>
-	
-	
 </ul>
 </body>
 </html>

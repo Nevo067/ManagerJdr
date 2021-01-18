@@ -15,15 +15,17 @@ public class FormCharacterJob {
 		
 		Charactercss characters = new Charactercss();
 		
+		
+		
 		characters.setNom(charaPri[0]);
 		characters.setMana(charaPri[1]);
 		characters.setStress(charaPri[2]);
-		
-		characters.setForce(Integer.parseInt(chara[0]));
-		characters.setConstitution(Integer.parseInt(chara[1]));
-		characters.setDexterite(Integer.parseInt(chara[2]));
-		characters.setPerception(Integer.parseInt(chara[3]));
-		characters.setCourage(Integer.parseInt(chara[4]));
+		//You musn't be a null
+		characters.setForce( chara[0].isEmpty() ? Integer.parseInt(chara[0]) : 0);
+		characters.setConstitution( chara[1].isEmpty() ? Integer.parseInt(chara[1]) : 0);
+		characters.setDexterite(chara[2].isEmpty() ? Integer.parseInt(chara[2]) : 0);
+		characters.setPerception(chara[3].isEmpty() ? Integer.parseInt(chara[3]) : 0);
+		characters.setCourage(chara[4].isEmpty() ? Integer.parseInt(chara[4]) : 0);
 		
 		return characters;
 		

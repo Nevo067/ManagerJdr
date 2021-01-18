@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="Navbar.jsp" %>
 <form action ="UtilisateurPageServlet" method="post">
 	<p><label>Login</label>
 		${ sessionScope.login }

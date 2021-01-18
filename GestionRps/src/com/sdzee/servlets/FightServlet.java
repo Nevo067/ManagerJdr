@@ -81,25 +81,31 @@ public class FightServlet extends HttpServlet {
 		HttpSession ses = request.getSession();
 		if(request.getParameter(PARAM_BUTTON_LOAD) != null)
 		{
-			Charactercss [] charaWhoFight = new Charactercss [2];
-			charaWhoFight[0] = chDao.FindCharacterByCharaId(Integer.parseInt(request.getParameter(FIELD_CHARA+1)));
-			charaWhoFight[1] = chDao.FindCharacterByCharaId(Integer.parseInt(request.getParameter(FIELD_CHARA+2)));
-			request.setAttribute(PARAM_CHARAFIGHT, charaWhoFight);
+			InitChara(request);
 		}
 		else if(request.getParameter(PARAM_BUTTON_DICE) != null)
 		{
-			List<Integer>listVal = DiceJob.RollMultiDice(100, 1);
+			InitChara(request);
+			List<Integer>listVal = DiceJob.RollMultiDice(100, 2);
 			request.setAttribute(PARAM_DICE_VALUE, listVal);
 			DataLaunchDice dataLaunchDice = (DataLaunchDice) ses.getAttribute(PARAM_OBJET_DICE_VAL);
 			dataLaunchDice.AddList(listVal);
-			
+			ses.setAttribute(PARAM_OBJET_DICE_VAL, dataLaunchDice);
 			request.setAttribute(PARAM_OBJET_DICE_VAL, dataLaunchDice);
 			request.setAttribute(PARAM_DICE_VALUE, dataLaunchDice.getListVal());
 			request.setAttribute(PARAM_NBBAL_DICE, dataLaunchDice.getListVal().size());
 			
 			
+			
 		}
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+	}
+
+	private void InitChara(HttpServletRequest request) {
+		Charactercss [] charaWhoFight = new Charactercss [2];
+		charaWhoFight[0] = chDao.FindCharacterByCharaId(Integer.parseInt(request.getParameter(FIELD_CHARA+1)));
+		charaWhoFight[1] = chDao.FindCharacterByCharaId(Integer.parseInt(request.getParameter(FIELD_CHARA+2)));
+		request.setAttribute(PARAM_CHARAFIGHT, charaWhoFight);
 	}
 	//Create list of character 
 	private void createLIstChara(HttpServletRequest request) {

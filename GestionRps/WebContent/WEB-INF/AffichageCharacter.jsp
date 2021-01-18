@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="Navbar.jsp" %>
 <h1>Character</h1>
 createListCharacter(request, ses);
 

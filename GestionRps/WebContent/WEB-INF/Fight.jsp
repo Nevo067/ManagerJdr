@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="Navbar.jsp" %>
 	<form action="FightServlet" method="POST">
 	    <div>
 	        <select name="chara1">
@@ -19,11 +20,28 @@
 	            	<option value="${listChara[i].idCharacterc}">${listChara[i].nom}</option>
 	        	</c:forEach>
 	        </select>
-	        <input type="button" name ="Load"/>
+	        <input type="submit" name ="Load"/>
 	    </div>
 	    <div name="Result">
 	        <c:forEach  var="i" begin="0" end="${ nbDice }" varStatus="status">
-	        	<p>${ listVal[i] }</p>
+	        <p> ${ charaFight[i%2].nom } : ${ listVal[i] } </p>
+	        	<c:if test="${ ((i%2) == 1 && listVal[i] != null)}">
+		        		<c:choose>
+		        		
+		        		<c:when test="${ (listVal[i] > listVal[(i-1)]) }">
+		        			<p>${ listChara[(i-1)%1].nom } gagne</p>
+		        		</c:when>
+		        		<c:when test="${ (listVal[i] < listVal[(i-1)]) }">
+		        				<p>${ listChara[i%2].nom } gagne</p>
+		        		</c:when>
+		        		<c:when test="${ (listVal[i] == listVal[(i-1)]) }">
+		        			<p>Egalite</p>
+		        		</c:when>
+		        		<c:otherwise>
+				            No comment sir...
+				         </c:otherwise>
+		        	</c:choose>	
+	        	</c:if>
 	        </c:forEach>
 	    </div>
 	    <div name="option">

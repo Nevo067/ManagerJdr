@@ -121,10 +121,10 @@ public class FormCharacter extends HttpServlet {
 			createListCharacter(ses, request);
 			
 		}
-		else if(request.getParameter("supp")!=null)
+		else if(request.getParameter("delete")!=null)
 		{
 			FormCharacterJob formCharacterJob = new FormCharacterJob();
-			Charactercss ca = formCharacterJob.CreateCharaById(request);
+			Charactercss ca = chDao.FindCharacterByCharaId(Integer.parseInt(request.getParameter("idChara")));
 			Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
 			System.out.println(utili.toString());
 			ca.setIdUtilisateur(utili.getIdUtilisateur());
@@ -134,6 +134,7 @@ public class FormCharacter extends HttpServlet {
 		
 		if(request.getParameter(BUTTON_PARAM_FORM) != null)
 		{
+			createListCharacter(ses, request);
 			ses.setAttribute(SES_PARAM_FORM,0);
 		}
 		else if(request.getParameter(BUTTON_PARAM_EDIT) != null)
@@ -143,12 +144,13 @@ public class FormCharacter extends HttpServlet {
 		}
 		else if(request.getParameter(BUTTON_PARAM_DELETE) != null)
 		{
+			createListCharacter(ses, request);
 			ses.setAttribute(SES_PARAM_FORM,2);
 		}
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 		
 	}
-
+	//Create a list of Character
 	private void createListCharacter(HttpSession ses,HttpServletRequest req) {
 		ses.setAttribute(SES_PARAM_FORM,1);
 		Utilisateur utili = utilDao.findLogin((String) ses.getAttribute("login"));
@@ -164,6 +166,8 @@ public class FormCharacter extends HttpServlet {
 			idList.add(intes.getIdCharacterc());
 		}
 		
+		//Init Session and Request attribute
+		//NIKEMOUK
 		ses.setAttribute("listChara", nomList);
 		ses.setAttribute("listId", idList);
 		ses.setAttribute("listCharas", chaList);

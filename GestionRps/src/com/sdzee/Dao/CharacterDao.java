@@ -124,6 +124,7 @@ public class CharacterDao {
 	 */
 	public void UpdateCharacter(Charactercss ca) throws IllegalArgumentException
 	{
+		
 		EntityManager em = emf.createEntityManager();
 		em.merge(ca);
 	}
@@ -133,7 +134,12 @@ public class CharacterDao {
 	public void DeleteCharecter(Charactercss ca) throws IllegalArgumentException
 	{
 		//TODO:A FINIR
+		
 		EntityManager em = emf.createEntityManager();
+		if(!em.contains(ca))
+		{
+			ca = em.merge(ca);
+		}
 		em.remove(ca);
 	}
 		
